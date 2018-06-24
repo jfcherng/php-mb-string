@@ -34,6 +34,7 @@ class MbStringTest extends TestCase
      * @covers \Jfcherng\Utility\MbString::strpos
      * @covers \Jfcherng\Utility\MbString::substr
      * @covers \Jfcherng\Utility\MbString::substr_replace_i
+     * @covers \Jfcherng\Utility\MbString::toArray
      */
     public function testMbString(): void
     {
@@ -83,8 +84,11 @@ class MbStringTest extends TestCase
         $mb->append('十六日');
         $this->assertSame('今天是五月十六日', $mb->get());
 
-        $mb->set('今天是五月');
-        $mb->str_enclose_i(['「', '」'], 3, 2);
-        $this->assertSame('今天是「五月」', $mb->get());
+        $mb->set('明年是2018');
+        $mb->str_enclose_i(['「', '」'], 3, 4);
+        $this->assertSame('明年是「2018」', $mb->get());
+
+        $mb->set('本月是五月');
+        $this->assertSame(['本', '月', '是', '五', '月'], $mb->toArray());
     }
 }

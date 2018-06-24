@@ -138,12 +138,12 @@ class MbString extends ArrayObject
 
     public function strtolower(): string
     {
-        return strtolower($this->outputConv($this->str));
+        return strtolower($this->get());
     }
 
     public function strtoupper(): string
     {
-        return strtoupper($this->outputConv($this->str));
+        return strtoupper($this->get());
     }
 
     ////////////////////////////////
@@ -200,6 +200,24 @@ class MbString extends ArrayObject
         $length = strlen($needle);
 
         return $length === 0 ? true : $needle === substr($this->str, -$length);
+    }
+
+    public function toArray(): array
+    {
+        if ($this->str === '') {
+            return [];
+        }
+
+        return preg_split('//uS', $this->get(), -1, PREG_SPLIT_NO_EMPTY);
+    }
+
+    public function toArrayRaw(): array
+    {
+        if ($this->str === '') {
+            return [];
+        }
+
+        return str_split($this->str, 4);
     }
 
     /////////////////////////////////////////////
