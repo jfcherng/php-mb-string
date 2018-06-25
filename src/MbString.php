@@ -79,6 +79,26 @@ class MbString extends ArrayObject
         return $this;
     }
 
+    public function setAt(int $idx, string $char): self
+    {
+        $char = $this->inputConv($char);
+        if (strlen($char) > 4) {
+            $char = substr($char, 0, 4);
+        }
+
+        $spacesPrepend = $idx - $this->strlen();
+        // set index (out of bound)
+        if ($spacesPrepend > 0) {
+            $this->str .= $this->inputConv(str_repeat(' ', $spacesPrepend)) . $char;
+        }
+        // set index (in bound)
+        else {
+            $this->str = substr_replace($this->str, $char, $idx << 2, 4);
+        }
+
+        return $this;
+    }
+
     /**
      * The string getter.
      *
@@ -97,6 +117,34 @@ class MbString extends ArrayObject
     public function getRaw(): string
     {
         return $this->str;
+    }
+
+    public function getAt(int $idx): string
+    {
+        return $this->outputConv(substr($this->str, $idx << 2, 4));
+    }
+
+    public function getAtRaw(int $idx): string
+    {
+        return substr($this->str, $idx << 2, 4);
+    }
+
+    public function toArray(): array
+    {
+        if ($this->str === '') {
+            return [];
+        }
+
+        return preg_split('//uS', $this->get(), -1, PREG_SPLIT_NO_EMPTY);
+    }
+
+    public function toArrayRaw(): array
+    {
+        if ($this->str === '') {
+            return [];
+        }
+
+        return str_split($this->str, 4);
     }
 
     ///////////////////////////////////
@@ -158,36 +206,6 @@ class MbString extends ArrayObject
     // non-manipulative functions //
     ////////////////////////////////
 
-    public function setAt(int $idx, string $char): self
-    {
-        $char = $this->inputConv($char);
-        if (strlen($char) > 4) {
-            $char = substr($char, 0, 4);
-        }
-
-        $spacesPrepend = $idx - $this->strlen();
-        // set index (out of bound)
-        if ($spacesPrepend > 0) {
-            $this->str .= $this->inputConv(str_repeat(' ', $spacesPrepend)) . $char;
-        }
-        // set index (in bound)
-        else {
-            $this->str = substr_replace($this->str, $char, $idx << 2, 4);
-        }
-
-        return $this;
-    }
-
-    public function getAt(int $idx): string
-    {
-        return $this->outputConv(substr($this->str, $idx << 2, 4));
-    }
-
-    public function getAtRaw(int $idx): string
-    {
-        return substr($this->str, $idx << 2, 4);
-    }
-
     public function has(string $needle): bool
     {
         $needle = $this->inputConv($needle);
@@ -208,24 +226,6 @@ class MbString extends ArrayObject
         $length = strlen($needle);
 
         return $length === 0 ? true : $needle === substr($this->str, -$length);
-    }
-
-    public function toArray(): array
-    {
-        if ($this->str === '') {
-            return [];
-        }
-
-        return preg_split('//uS', $this->get(), -1, PREG_SPLIT_NO_EMPTY);
-    }
-
-    public function toArrayRaw(): array
-    {
-        if ($this->str === '') {
-            return [];
-        }
-
-        return str_split($this->str, 4);
     }
 
     /////////////////////////////////////////////
