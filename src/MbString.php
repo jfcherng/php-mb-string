@@ -66,7 +66,7 @@ class MbString extends ArrayObject
     }
 
     /**
-     * The value setter.
+     * The string setter.
      *
      * @param string $str the string
      *
@@ -80,15 +80,23 @@ class MbString extends ArrayObject
     }
 
     /**
-     * The value getter.
-     *
-     * @param bool $isRaw indicates if raw
+     * The string getter.
      *
      * @return string
      */
-    public function get(bool $isRaw = false): string
+    public function get(): string
     {
-        return $isRaw ? $this->str : $this->outputConv($this->str);
+        return $this->outputConv($this->str);
+    }
+
+    /**
+     * The raw string getter.
+     *
+     * @return string
+     */
+    public function getRaw(): string
+    {
+        return $this->str;
     }
 
     ///////////////////////////////////
