@@ -3,6 +3,12 @@ VERSION 1  INIT
 ===============
 
    Version 1.2 - init
+      04/09/2018 18:58  1.2.4  php-cs-fixer
+         0020f0d php-cs-fixer: enable native_constant_invocation and native_function_invocation
+         f49dd29 Update deps
+         cb21cf1 Rename CHANGELOG.md -> CHANGELOG
+         cf74396 Update deps
+         4bb0848 Update .travis.yml
       18/07/2018 08:28  1.2.3  Update deps
          4dc8711 Add composer.lock
          73a7dd6 Mark ext-iconv as a requirement
