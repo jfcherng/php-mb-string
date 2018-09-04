@@ -49,7 +49,7 @@ class MbString extends ArrayObject
      */
     public function __construct(string $str = '', string $encoding = 'UTF-8')
     {
-        static::$utf32Header = static::$utf32Header ?? substr(iconv($encoding, 'UTF-32', ' '), 0, 4);
+        static::$utf32Header = static::$utf32Header ?? \substr(\iconv($encoding, 'UTF-32', ' '), 0, 4);
 
         $this->encoding = $encoding;
         $this->set($str);
@@ -82,18 +82,18 @@ class MbString extends ArrayObject
     public function setAt(int $idx, string $char): self
     {
         $char = $this->inputConv($char);
-        if (strlen($char) > 4) {
-            $char = substr($char, 0, 4);
+        if (\strlen($char) > 4) {
+            $char = \substr($char, 0, 4);
         }
 
         $spacesPrepend = $idx - $this->strlen();
         // set index (out of bound)
         if ($spacesPrepend > 0) {
-            $this->str .= $this->inputConv(str_repeat(' ', $spacesPrepend)) . $char;
+            $this->str .= $this->inputConv(\str_repeat(' ', $spacesPrepend)) . $char;
         }
         // set index (in bound)
         else {
-            $this->str = substr_replace($this->str, $char, $idx << 2, 4);
+            $this->str = \substr_replace($this->str, $char, $idx << 2, 4);
         }
 
         return $this;
@@ -121,12 +121,12 @@ class MbString extends ArrayObject
 
     public function getAt(int $idx): string
     {
-        return $this->outputConv(substr($this->str, $idx << 2, 4));
+        return $this->outputConv(\substr($this->str, $idx << 2, 4));
     }
 
     public function getAtRaw(int $idx): string
     {
-        return substr($this->str, $idx << 2, 4);
+        return \substr($this->str, $idx << 2, 4);
     }
 
     public function toArray(): array
@@ -135,7 +135,7 @@ class MbString extends ArrayObject
             return [];
         }
 
-        return preg_split('//uS', $this->get(), -1, PREG_SPLIT_NO_EMPTY);
+        return \preg_split('//uS', $this->get(), -1, \PREG_SPLIT_NO_EMPTY);
     }
 
     public function toArrayRaw(): array
@@ -144,7 +144,7 @@ class MbString extends ArrayObject
             return [];
         }
 
-        return str_split($this->str, 4);
+        return \str_split($this->str, 4);
     }
 
     ///////////////////////////////////
@@ -154,30 +154,30 @@ class MbString extends ArrayObject
     public function stripos(string $needle, int $offset = 0)
     {
         $needle = $this->inputConv($needle);
-        $pos = stripos($this->str, $needle, $offset << 2);
+        $pos = \stripos($this->str, $needle, $offset << 2);
 
-        return is_bool($pos) ? $pos : $pos >> 2;
+        return \is_bool($pos) ? $pos : $pos >> 2;
     }
 
     public function strlen(): int
     {
-        return strlen($this->str) >> 2;
+        return \strlen($this->str) >> 2;
     }
 
     public function strpos(string $needle, int $offset = 0)
     {
         $needle = $this->inputConv($needle);
-        $pos = strpos($this->str, $needle, $offset << 2);
+        $pos = \strpos($this->str, $needle, $offset << 2);
 
-        return is_bool($pos) ? $pos : $pos >> 2;
+        return \is_bool($pos) ? $pos : $pos >> 2;
     }
 
     public function substr(int $start = 0, ?int $length = null): string
     {
         return $this->outputConv(
             isset($length)
-                ? substr($this->str, $start << 2, $length << 2)
-                : substr($this->str, $start << 2)
+                ? \substr($this->str, $start << 2, $length << 2)
+                : \substr($this->str, $start << 2)
         );
     }
 
@@ -187,19 +187,19 @@ class MbString extends ArrayObject
 
         return $this->outputConv(
             isset($length)
-                ? substr_replace($this->str, $replacement, $start << 2, $length << 2)
-                : substr_replace($this->str, $replacement, $start << 2)
+                ? \substr_replace($this->str, $replacement, $start << 2, $length << 2)
+                : \substr_replace($this->str, $replacement, $start << 2)
         );
     }
 
     public function strtolower(): string
     {
-        return strtolower($this->get());
+        return \strtolower($this->get());
     }
 
     public function strtoupper(): string
     {
-        return strtoupper($this->get());
+        return \strtoupper($this->get());
     }
 
     ////////////////////////////////
@@ -210,22 +210,22 @@ class MbString extends ArrayObject
     {
         $needle = $this->inputConv($needle);
 
-        return strpos($this->str, $needle) !== false;
+        return \strpos($this->str, $needle) !== false;
     }
 
     public function startsWith(string $needle): bool
     {
         $needle = $this->inputConv($needle);
 
-        return $needle === substr($this->str, 0, strlen($needle));
+        return $needle === \substr($this->str, 0, \strlen($needle));
     }
 
     public function endsWith(string $needle): bool
     {
         $needle = $this->inputConv($needle);
-        $length = strlen($needle);
+        $length = \strlen($needle);
 
-        return $length === 0 ? true : $needle === substr($this->str, -$length);
+        return $length === 0 ? true : $needle === \substr($this->str, -$length);
     }
 
     /////////////////////////////////////////////
@@ -235,7 +235,7 @@ class MbString extends ArrayObject
     public function str_insert_i(string $insert, int $position): self
     {
         $insert = $this->inputConv($insert);
-        $this->str = substr_replace($this->str, $insert, $position << 2, 0);
+        $this->str = \substr_replace($this->str, $insert, $position << 2, 0);
 
         return $this;
     }
@@ -250,16 +250,16 @@ class MbString extends ArrayObject
 
         $closures[3] = '"';
 
-        if (count($closures) < 2) {
-            $closures[0] = $closures[1] = reset($closures);
+        if (\count($closures) < 2) {
+            $closures[0] = $closures[1] = \reset($closures);
         }
 
         if (isset($length)) {
-            $replacement = $closures[0] . substr($this->str, $start << 2, $length << 2) . $closures[1];
-            $this->str = substr_replace($this->str, $replacement, $start << 2, $length << 2);
+            $replacement = $closures[0] . \substr($this->str, $start << 2, $length << 2) . $closures[1];
+            $this->str = \substr_replace($this->str, $replacement, $start << 2, $length << 2);
         } else {
-            $replacement = $closures[0] . substr($this->str, $start << 2) . $closures[1];
-            $this->str = substr_replace($this->str, $replacement, $start << 2);
+            $replacement = $closures[0] . \substr($this->str, $start << 2) . $closures[1];
+            $this->str = \substr_replace($this->str, $replacement, $start << 2);
         }
 
         return $this;
@@ -269,7 +269,7 @@ class MbString extends ArrayObject
     {
         $search = $this->inputConv($search);
         $replace = $this->inputConv($replace);
-        $this->str = str_replace($search, $replace, $this->str);
+        $this->str = \str_replace($search, $replace, $this->str);
 
         return $this;
     }
@@ -279,8 +279,8 @@ class MbString extends ArrayObject
         $replacement = $this->inputConv($replacement);
         $this->str = (
             isset($length)
-                ? substr_replace($this->str, $replacement, $start << 2, $length << 2)
-                : substr_replace($this->str, $replacement, $start << 2)
+                ? \substr_replace($this->str, $replacement, $start << 2, $length << 2)
+                : \substr_replace($this->str, $replacement, $start << 2)
         );
 
         return $this;
@@ -302,7 +302,7 @@ class MbString extends ArrayObject
 
     public function offsetExists($idx): bool
     {
-        return is_int($idx) ? $this->strlen() > $idx : false;
+        return \is_int($idx) ? $this->strlen() > $idx : false;
     }
 
     public function append($str): void
@@ -326,7 +326,7 @@ class MbString extends ArrayObject
             return '';
         }
 
-        return iconv('UTF-32', $this->encoding, static::$utf32Header . "{$str}");
+        return \iconv('UTF-32', $this->encoding, static::$utf32Header . "{$str}");
     }
 
     // convert the input string to UTF-32 without header
@@ -337,6 +337,6 @@ class MbString extends ArrayObject
         }
 
         // we don't want the header so first 4 bytes are stripped
-        return substr(iconv($this->encoding, 'UTF-32', $str), 4);
+        return \substr(\iconv($this->encoding, 'UTF-32', $str), 4);
     }
 }

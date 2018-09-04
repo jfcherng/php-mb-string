@@ -45,7 +45,7 @@ class MbStringTest extends TestCase
         $this->assertSame('許', $mb[7]);
         $this->assertSame('功', $mb->getAt(8));
         $this->assertSame(11, $mb->strlen());
-        $this->assertSame(11, count($mb));
+        $this->assertSame(11, \count($mb));
         $this->assertTrue(isset($mb[10]));
         $this->assertFalse(isset($mb[11]));
 

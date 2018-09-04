@@ -27,4 +27,4 @@ $results = LevenshteinDistance::calculate(
 //         ['cpy', 0, 0],
 //     ],
 // ]
-var_dump($results);
+\var_dump($results);
