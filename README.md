@@ -26,7 +26,7 @@ random access with speed. With the power of random access, we could use
 # Installation
 
 ```
-$ composer require jfcherng/php-mb-string --no-dev
+$ composer require jfcherng/php-mb-string
 ```
 
 
