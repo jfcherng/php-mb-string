@@ -131,11 +131,16 @@ class MbString extends ArrayObject
 
     public function toArray(): array
     {
+        return $this->toArraySplit('//uS', -1, \PREG_SPLIT_NO_EMPTY);
+    }
+
+    public function toArraySplit(string $regex, int $limit = -1, $flags = 0): array
+    {
         if ($this->str === '') {
             return [];
         }
 
-        return \preg_split('//uS', $this->get(), -1, \PREG_SPLIT_NO_EMPTY);
+        return \preg_split($regex, $this->get(), $limit, $flags);
     }
 
     public function toArrayRaw(): array

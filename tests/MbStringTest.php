@@ -90,5 +90,11 @@ class MbStringTest extends TestCase
 
         $mb->set('本月是五月');
         $this->assertSame(['本', '月', '是', '五', '月'], $mb->toArray());
+
+        $mb->set('本月，是五月。');
+        $this->assertSame(
+            ['本月', '，', '是五月', '。', ''],
+            $mb->toArraySplit('/([，。])/uS', -1, \PREG_SPLIT_DELIM_CAPTURE)
+        );
     }
 }
