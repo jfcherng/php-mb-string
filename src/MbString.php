@@ -47,6 +47,7 @@ class MbString extends \ArrayObject
      */
     public function __construct(string $str = '', string $encoding = 'UTF-8')
     {
+        // just use any char to get the endian header, here we use a space
         static::$utf32Header = static::$utf32Header ?? \substr(\iconv($encoding, 'UTF-32', ' '), 0, 4);
 
         $this->encoding = $encoding;
@@ -110,7 +111,7 @@ class MbString extends \ArrayObject
     /**
      * The raw string getter.
      *
-     * @return string
+     * @return string the UTF-32-encoded raw string
      */
     public function getRaw(): string
     {
@@ -329,7 +330,7 @@ class MbString extends \ArrayObject
             return '';
         }
 
-        return \iconv('UTF-32', $this->encoding, static::$utf32Header . "{$str}");
+        return \iconv('UTF-32', $this->encoding, static::$utf32Header . $str);
     }
 
     // convert the input string to UTF-32 without header
