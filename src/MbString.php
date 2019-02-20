@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Jfcherng\Utility;
 
-use ArrayObject;
-
 /**
  * An internal UTF-32 version multi-bytes string class.
  *
@@ -20,7 +18,7 @@ use ArrayObject;
  *
  * @author Jack Cherng <jfcherng@gmail.com>
  */
-class MbString extends ArrayObject
+class MbString extends \ArrayObject
 {
     /**
      * UTF-32 string without endian bytes.
