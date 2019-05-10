@@ -9,6 +9,8 @@
             "email": "jfcherng@gmail.com"
         }
     ],
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Jfcherng\\Utility\\": "src/"
@@ -28,7 +30,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
-        "phan/phan": "^1.2",
+        "phan/phan": "^2.0",
         "phpunit/phpunit": "^7.2 || ^8.0"
     },
     "scripts": {
