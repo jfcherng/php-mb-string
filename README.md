@@ -35,6 +35,11 @@ $ composer require jfcherng/php-mb-string
 See [tests/MbStringTest.php](https://github.com/jfcherng/php-mb-string/blob/master/tests/MbStringTest.php).
 
 
+# Benchmark
+
+See [benchmark/_results.txt](https://github.com/jfcherng/php-mb-string/blob/master/benchmark/_results.txt).
+
+
 Supporters <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ATXYY9Y78EQ3Y" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" /></a>
 ==========
 

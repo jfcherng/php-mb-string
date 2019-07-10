@@ -1,0 +1,131 @@
+[Clover@Clover-NB benchmark](master)$ php71 benchmark.php
+# BENCHMARK: very-short.txt
+===========================
+PHP mb_*(): 1.545196056366
+MbString: 0.87761092185974
+===========================
+Character counts: 60
+Speed up: 76.07%
+
+# BENCHMARK: short.txt
+======================
+PHP mb_*(): 3.2649149894714
+MbString: 0.72609210014343
+======================
+Character counts: 486
+Speed up: 349.66%
+
+# BENCHMARK: long.txt
+=====================
+PHP mb_*(): 1.3541719913483
+MbString: 0.17152214050293
+=====================
+Character counts: 1084
+Speed up: 689.5%
+
+# BENCHMARK: very-long.txt
+==========================
+PHP mb_*(): 2.2002789974213
+MbString: 0.10901403427124
+==========================
+Character counts: 4624
+Speed up: 1918.34%
+
+[Clover@Clover-NB benchmark](master)$ php72 benchmark.php
+# BENCHMARK: very-short.txt
+===========================
+PHP mb_*(): 1.5346949100494
+MbString: 0.79160118103027
+===========================
+Character counts: 60
+Speed up: 93.87%
+
+# BENCHMARK: short.txt
+======================
+PHP mb_*(): 3.256912946701
+MbString: 0.66308498382568
+======================
+Character counts: 486
+Speed up: 391.18%
+
+# BENCHMARK: long.txt
+=====================
+PHP mb_*(): 1.379674911499
+MbString: 0.15602016448975
+=====================
+Character counts: 1084
+Speed up: 784.29%
+
+# BENCHMARK: very-long.txt
+==========================
+PHP mb_*(): 2.2112798690796
+MbString: 0.10751414299011
+==========================
+Character counts: 4624
+Speed up: 1956.73%
+
+[Clover@Clover-NB benchmark](master)$ php73 benchmark.php
+# BENCHMARK: very-short.txt
+===========================
+PHP mb_*(): 0.54206895828247
+MbString: 0.78410005569458
+===========================
+Character counts: 60
+Speed up: -30.87%
+
+# BENCHMARK: short.txt
+======================
+PHP mb_*(): 1.6837139129639
+MbString: 0.64908194541931
+======================
+Character counts: 486
+Speed up: 159.4%
+
+# BENCHMARK: long.txt
+=====================
+PHP mb_*(): 0.76809811592102
+MbString: 0.16502094268799
+=====================
+Character counts: 1084
+Speed up: 365.45%
+
+# BENCHMARK: very-long.txt
+==========================
+PHP mb_*(): 1.3596720695496
+MbString: 0.10151290893555
+==========================
+Character counts: 4624
+Speed up: 1239.41%
+
+[Clover@Clover-NB benchmark](master)$ php74 benchmark.php
+# BENCHMARK: very-short.txt
+===========================
+PHP mb_*(): 0.4825611114502
+MbString: 0.77359795570374
+===========================
+Character counts: 60
+Speed up: -37.62%
+
+# BENCHMARK: short.txt
+======================
+PHP mb_*(): 1.6477088928223
+MbString: 0.63908195495605
+======================
+Character counts: 486
+Speed up: 157.82%
+
+# BENCHMARK: long.txt
+=====================
+PHP mb_*(): 0.75459599494934
+MbString: 0.15351891517639
+=====================
+Character counts: 1084
+Speed up: 391.53%
+
+# BENCHMARK: very-long.txt
+==========================
+PHP mb_*(): 1.3471710681915
+MbString: 0.10051298141479
+==========================
+Character counts: 4624
+Speed up: 1240.3%
