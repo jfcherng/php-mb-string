@@ -66,7 +66,8 @@ function benchmark(string $str, int $runs, string $title = ''): void
     /////////
 
     echo "{$separator}\n";
-    echo "Character counts: {$strLen}\n";
+    echo "Nums of Chars: {$strLen}\n";
+    echo "Nums of Runs: {$runs}\n";
 
     $speedUp = $timeMbNative / $timeMbString - 1;
     $speedUpPercent = \round($speedUp * 100, 2);
