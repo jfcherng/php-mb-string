@@ -3,6 +3,19 @@ VERSION 1  INIT
 ===============
 
    Version 1.3 - Add MbString::toArraySplit()
+      11/07/2019 09:16  1.3.1  nits
+         e5ddaaf Add benchmark results
+         464c021 Remove wrong demo.php
+         649e809 Update deps
+         24c449a Add .gitattributes
+         37957e2 $ composer fix
+         0bd808f Update deps
+         8d873b7 Update .travis.yml for 7.4snapshot
+         492dd4d Add .editorconfig
+         e554752 Update deps
+         64f5b45 nits
+         48d0a13 Use native namespace
+         68e31aa Update deps
       22/01/2019 13:47  1.3.0  initial release
          5bcdcc5 Add MbString::toArraySplit()
          21dff79 year++
