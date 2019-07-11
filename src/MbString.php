@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace Jfcherng\Utility;
 
 /**
- * An internal UTF-32 version multi-bytes string class.
+ * An internal UTF-32 multi-bytes string class.
  *
- * Because UTF-8 is not fix-width, I believe mb_substr() is O(n) with it.
- * Using iconv() to make it UTF-32 and work with substr() is O(1) hence this class.
+ * Because UTF-8 is varied-width, mb_*() is kinda O(n) when doing decoding.
+ * Using iconv() to make it UTF-32 and work with str*() can be possibly faster.
  *
  * UTF-32 is a fix-width encoding (1 char = 4 bytes).
- * We do not use mb_* functions in this class.
- * Note that the first 4 bytes in UTF-32 are headers (endian bytes).
- *
- * @require libiconv (mostly supplied in modern OS)
+ * Note that the first 4 bytes in a UTF-32 string is the header (endian bytes).
  *
  * @author Jack Cherng <jfcherng@gmail.com>
  */

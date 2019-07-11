@@ -1,6 +1,6 @@
 {
     "name": "jfcherng/php-mb-string",
-    "description": "An implementation targeting high performance for frequently reading/writing operations.",
+    "description": "A high performance multibytes sting implementation for frequently reading/writing operations.",
     "type": "library",
     "license": "MIT",
     "authors": [
