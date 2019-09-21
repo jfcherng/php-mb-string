@@ -3,6 +3,13 @@ VERSION 1  INIT
 ===============
 
    Version 1.3 - Add MbString::toArraySplit()
+      21/09/2019 10:02  1.3.2  Faster MbString::toArray()
+         75785d5 nits
+         4fe3304 Faster MbString::toArray()
+         d68c92d Update deps
+         0191a10 Update readme to use badges from shields.io
+         715f7b1 Revise docs
+         a509909 Output "Nums of Runs" in the benchmark
       11/07/2019 09:16  1.3.1  nits
          e5ddaaf Add benchmark results
          464c021 Remove wrong demo.php
