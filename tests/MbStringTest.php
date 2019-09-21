@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Jfcherng\Utility\Test;
 
 use Jfcherng\Utility\MbString;
-use Jfcherng\Utility\MbString as JfcherngMbString;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,11 +34,11 @@ final class MbStringTest extends TestCase
      * @covers \Jfcherng\Utility\MbString::str_insert_i
      * @covers \Jfcherng\Utility\MbString::strlen
      * @covers \Jfcherng\Utility\MbString::strpos
+     * @covers \Jfcherng\Utility\MbString::strToChars
      * @covers \Jfcherng\Utility\MbString::substr
      * @covers \Jfcherng\Utility\MbString::substr_replace_i
      * @covers \Jfcherng\Utility\MbString::toArray
      * @covers \Jfcherng\Utility\MbString::toArraySplit
-     * @covers \Jfcherng\Utility\MbString::strToChars
      */
     public function testMbString(): void
     {

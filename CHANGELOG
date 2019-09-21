@@ -2,6 +2,10 @@
 VERSION 1  INIT
 ===============
 
+   Version 1.4 - Add MbString::strToChars()
+      21/09/2019 10:17  1.4.0  initial release
+         7a81573 Add MbString::strToChars()
+
    Version 1.3 - Add MbString::toArraySplit()
       21/09/2019 10:02  1.3.2  Faster MbString::toArray()
          75785d5 nits
