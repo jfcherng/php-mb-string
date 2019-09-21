@@ -37,6 +37,7 @@ final class MbStringTest extends TestCase
      * @covers \Jfcherng\Utility\MbString::substr
      * @covers \Jfcherng\Utility\MbString::substr_replace_i
      * @covers \Jfcherng\Utility\MbString::toArray
+     * @covers \Jfcherng\Utility\MbString::toArraySplit
      */
     public function testMbString(): void
     {
