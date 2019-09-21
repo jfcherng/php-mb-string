@@ -90,8 +90,8 @@ final class MbStringTest extends TestCase
         $mb->str_enclose_i(['「', '」'], 3, 4);
         static::assertSame('明年是「2018」', $mb->get());
 
-        $mb->set('本月是五月');
-        static::assertSame(['本', '月', '是', '五', '月'], $mb->toArray());
+        $mb->set("本月是五月\n！");
+        static::assertSame(['本', '月', '是', '五', '月', "\n", '！'], $mb->toArray());
 
         $mb->set('本月，是五月。');
         static::assertSame(

@@ -127,7 +127,7 @@ class MbString extends \ArrayObject
 
     public function toArray(): array
     {
-        return $this->toArraySplit('//uS', -1, \PREG_SPLIT_NO_EMPTY);
+        return \preg_match_all('/./suS', $this->get(), $matches) ? $matches[0] : [];
     }
 
     public function toArraySplit(string $regex, int $limit = -1, $flags = 0): array
