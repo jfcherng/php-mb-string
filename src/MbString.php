@@ -127,7 +127,7 @@ class MbString extends \ArrayObject
 
     public function toArray(): array
     {
-        return \preg_match_all('/./suS', $this->get(), $matches) ? $matches[0] : [];
+        return self::strToChars($this->get());
     }
 
     public function toArraySplit(string $regex, int $limit = -1, $flags = 0): array
@@ -146,6 +146,11 @@ class MbString extends \ArrayObject
         }
 
         return \str_split($this->str, 4);
+    }
+
+    public static function strToChars(string $str): array
+    {
+        return \preg_match_all('/./suS', $str, $matches) ? $matches[0] : [];
     }
 
     ///////////////////////////////////

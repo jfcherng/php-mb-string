@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jfcherng\Utility\Test;
 
 use Jfcherng\Utility\MbString;
+use Jfcherng\Utility\MbString as JfcherngMbString;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -38,6 +39,7 @@ final class MbStringTest extends TestCase
      * @covers \Jfcherng\Utility\MbString::substr_replace_i
      * @covers \Jfcherng\Utility\MbString::toArray
      * @covers \Jfcherng\Utility\MbString::toArraySplit
+     * @covers \Jfcherng\Utility\MbString::strToChars
      */
     public function testMbString(): void
     {
@@ -98,6 +100,11 @@ final class MbStringTest extends TestCase
         static::assertSame(
             ['本月', '，', '是五月', '。', ''],
             $mb->toArraySplit('/([，。])/uS', -1, \PREG_SPLIT_DELIM_CAPTURE)
+        );
+
+        static::assertSame(
+            ['本', '月', '是', '五', '月', "\n", '！'],
+            MbString::strToChars("本月是五月\n！")
         );
     }
 }
