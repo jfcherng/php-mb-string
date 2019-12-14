@@ -67,6 +67,7 @@ return [
     // Add any issue types (such as 'PhanUndeclaredMethod')
     // to this black-list to inhibit them from being reported.
     'suppress_issue_types' => [
+        'PhanTypePossiblyInvalidDimOffset',
         // 'PhanTypeArraySuspicious',
         // 'PhanTypeMismatchProperty',
         // 'PhanUnanalyzable',
