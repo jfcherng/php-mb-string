@@ -254,8 +254,6 @@ class MbString extends \ArrayObject
         }
         unset($closure);
 
-        $closures[3] = '"';
-
         if (\count($closures) < 2) {
             $closures[0] = $closures[1] = \reset($closures);
         }
