@@ -1,11 +1,11 @@
 # php-mb-string
 
-<a href="https://travis-ci.org/jfcherng/php-mb-string"><img alt="Travis (.org) branch" src="https://img.shields.io/travis/jfcherng/php-mb-string/master"></a>
-<a href="https://packagist.org/packages/jfcherng/php-mb-string"><img alt="Packagist" src="https://img.shields.io/packagist/dt/jfcherng/php-mb-string"></a>
-<a href="https://packagist.org/packages/jfcherng/php-mb-string"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/jfcherng/php-mb-string"></a>
-<a href="https://github.com/jfcherng/php-mb-string/blob/master/LICENSE"><img alt="Project license" src="https://img.shields.io/github/license/jfcherng/php-mb-string"></a>
-<a href="https://github.com/jfcherng/php-mb-string/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/jfcherng/php-mb-string?logo=github"></a>
-<a href="https://www.paypal.me/jfcherng/5usd" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-blue.svg?logo=paypal" /></a>
+[![Travis (.org) branch](https://img.shields.io/travis/jfcherng/php-mb-string/master)](https://travis-ci.org/jfcherng/php-mb-string)
+[![Packagist](https://img.shields.io/packagist/dt/jfcherng/php-mb-string)](https://packagist.org/packages/jfcherng/php-mb-string)
+[![Packagist Version](https://img.shields.io/packagist/v/jfcherng/php-mb-string)](https://packagist.org/packages/jfcherng/php-mb-string)
+[![Project license](https://img.shields.io/github/license/jfcherng/php-mb-string)](https://github.com/jfcherng/php-mb-string/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/jfcherng/php-mb-string?logo=github)](https://github.com/jfcherng/php-mb-string/stargazers)
+[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?logo=paypal)](https://www.paypal.me/jfcherng/5usd)
 
 A high performance multibyte sting implementation for frequently reading/writing operations.
 
@@ -35,7 +35,7 @@ use `str_*()` functions to do the job internally.
 ## Installation
 
 ```bash
-$ composer require jfcherng/php-mb-string
+composer require jfcherng/php-mb-string
 ```
 
 
