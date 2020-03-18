@@ -65,8 +65,6 @@ class MbString extends \ArrayObject
      * The string setter.
      *
      * @param string $str the string
-     *
-     * @return self
      */
     public function set(string $str): self
     {
@@ -97,8 +95,6 @@ class MbString extends \ArrayObject
 
     /**
      * The string getter.
-     *
-     * @return string
      */
     public function get(): string
     {
