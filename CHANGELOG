@@ -3,6 +3,16 @@ VERSION 1  INIT
 ===============
 
    Version 1.4 - Add MbString::strToChars()
+      04/04/2020 01:10  1.4.1  nits
+         c6b73d9 chore: update deps
+         66fc4ef docs: use markdown grammar badges in readme
+         1396862 chore: $ composer fix
+         9a7a15e chore: update deps
+         feffd7b Add PHP 8.0.0-dev benchmark result
+         2108041 Suppress annoying PhanTypePossiblyInvalidDimOffset errors
+         157c102 Remove unused codes
+         42b320a Update deps
+         b19e65f Update .travis.yml to PHP 7.4 stable
       21/09/2019 10:17  1.4.0  initial release
          7a81573 Add MbString::strToChars()
 
