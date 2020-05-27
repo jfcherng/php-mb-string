@@ -3,6 +3,9 @@ VERSION 1  INIT
 ===============
 
    Version 1.4 - Add MbString::strToChars()
+      28/05/2020 03:25  1.4.2  allow PHP 8
+         7f8bdde chore: update deps
+         738b66b chore: Composer PHP constrain >=7.1.3
       04/04/2020 01:10  1.4.1  nits
          c6b73d9 chore: update deps
          66fc4ef docs: use markdown grammar badges in readme
