@@ -22,6 +22,9 @@
         }
     },
     "config": {
+        "platform": {
+            "php": "7.1.3"
+        },
         "sort-packages": true
     },
     "require": {
@@ -30,8 +33,8 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
-        "phan/phan": "^2.0",
-        "phpunit/phpunit": "^7.2 || ^8.0"
+        "phan/phan": "^2 || ^3",
+        "phpunit/phpunit": "^7.2 || ^8 || ^9"
     },
     "scripts": {
         "analyze": [

@@ -1,18 +1,18 @@
 # php-mb-string
 
-[![Travis (.org) branch](https://img.shields.io/travis/jfcherng/php-mb-string/master)](https://travis-ci.org/jfcherng/php-mb-string)
-[![Packagist](https://img.shields.io/packagist/dt/jfcherng/php-mb-string)](https://packagist.org/packages/jfcherng/php-mb-string)
-[![Packagist Version](https://img.shields.io/packagist/v/jfcherng/php-mb-string)](https://packagist.org/packages/jfcherng/php-mb-string)
-[![Project license](https://img.shields.io/github/license/jfcherng/php-mb-string)](https://github.com/jfcherng/php-mb-string/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/jfcherng/php-mb-string?logo=github)](https://github.com/jfcherng/php-mb-string/stargazers)
-[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?logo=paypal)](https://www.paypal.me/jfcherng/5usd)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jfcherng/php-mb-string/Main/master?style=flat-square)](https://github.com/jfcherng/php-mb-string/actions)
+[![Packagist](https://img.shields.io/packagist/dt/jfcherng/php-mb-string?style=flat-square)](https://packagist.org/packages/jfcherng/php-mb-string)
+[![Packagist Version](https://img.shields.io/packagist/v/jfcherng/php-mb-string?style=flat-square)](https://packagist.org/packages/jfcherng/php-mb-string)
+[![Project license](https://img.shields.io/github/license/jfcherng/php-mb-string?style=flat-square)](https://github.com/jfcherng/php-mb-string/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/jfcherng/php-mb-string?style=flat-square&logo=github)](https://github.com/jfcherng/php-mb-string/stargazers)
+[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.me/jfcherng/5usd)
 
 A high performance multibyte sting implementation for frequently reading/writing operations.
 
 
 ## Why I Write This Package?
 
-Consider that you have a **LONG** multibyte string and 
+Consider that you have a **LONG** multibyte string and
 you want to do lots of following operations on it.
 
 - Random reading/writing such as `$char = $str[5];` or `$str[5] = '許';`.
