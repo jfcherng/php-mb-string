@@ -1,10 +1,10 @@
 PHP versions under test:
 
 - PHP 7.1.34-dev (cli) (built: Jan 15 2020 03:51:48) ( NTS MSVC14 (Visual C++ 2015) x64 )
-- PHP 7.2.29-dev (cli) (built: Mar  3 2020 04:49:07) ( NTS MSVC15 (Visual C++ 2017) x64 )
-- PHP 7.3.17-dev (cli) (built: Mar  3 2020 15:02:48) ( NTS MSVC15 (Visual C++ 2017) x64 )
-- PHP 7.4.5-dev (cli) (built: Mar  8 2020 05:15:49) ( NTS Visual C++ 2017 x64 )
-- PHP 8.0.0-dev (cli) (built: Mar  9 2020 06:57:32) ( NTS Visual C++ 2019 x64 )
+- PHP 7.2.31 (cli) (built: May 12 2020 10:26:30) ( NTS MSVC15 (Visual C++ 2017) x64 )
+- PHP 7.3.20RC1 (cli) (built: Jun 23 2020 11:29:48) ( NTS MSVC15 (Visual C++ 2017) x64 )
+- PHP 7.4.7 (cli) (built: Jun  9 2020 13:34:30) ( NTS Visual C++ 2017 x64 )
+- PHP 8.0.0alpha1 (cli) (built: Jun 25 2020 09:20:19) ( NTS Visual C++ 2019 x64 )
 
 All tests have the following configurations:
 
@@ -60,150 +60,149 @@ Speed up: 1943.12%
 [Clover@Clover-NB benchmark](master)$ php72 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 1.5521969795227
-MbString: 0.84310698509216
+PHP mb_*(): 1.8657369613647
+MbString: 1.341169834137
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: 84.1%
+Speed up: 39.11%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 3.2759158611298
-MbString: 0.65708303451538
+PHP mb_*(): 3.7144720554352
+MbString: 0.91861701011658
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 398.55%
+Speed up: 304.35%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 1.3516719341278
-MbString: 0.15852022171021
+PHP mb_*(): 1.5071909427643
+MbString: 0.19152522087097
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 752.68%
+Speed up: 686.94%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 2.1852779388428
-MbString: 0.10451292991638
+PHP mb_*(): 2.2817888259888
+MbString: 0.1155149936676
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1990.92%
+Speed up: 1875.32%
 
 
 [Clover@Clover-NB benchmark](master)$ php73 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.53456807136536
-MbString: 0.79810094833374
+PHP mb_*(): 0.59407591819763
+MbString: 0.88161206245422
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -33.02%
+Speed up: -32.61%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.6852140426636
-MbString: 0.64808201789856
+PHP mb_*(): 1.7827258110046
+MbString: 0.73959422111511
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 160.03%
+Speed up: 141.04%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.76509690284729
-MbString: 0.1550190448761
+PHP mb_*(): 0.79810094833374
+MbString: 0.1800229549408
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 393.55%
+Speed up: 343.33%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3756749629974
-MbString: 0.10601305961609
+PHP mb_*(): 1.4021780490875
+MbString: 0.11151504516602
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1197.65%
+Speed up: 1157.39%
 
 
 [Clover@Clover-NB benchmark](master)$ php74 benchmark.php
-# BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.49506306648254
-MbString: 0.74059391021729
+PHP mb_*(): 0.54756903648376
+MbString: 0.88361191749573
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -33.15%
+Speed up: -38.03%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.6592102050781
-MbString: 0.63258099555969
+PHP mb_*(): 1.7542231082916
+MbString: 0.66808390617371
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 162.29%
+Speed up: 162.58%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.75959587097168
-MbString: 0.15551996231079
+PHP mb_*(): 0.80210208892822
+MbString: 0.1515200138092
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 388.42%
+Speed up: 429.37%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3606731891632
-MbString: 0.10701298713684
+PHP mb_*(): 1.3931760787964
+MbString: 0.10251402854919
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1171.5%
+Speed up: 1259.01%
 
 
 [Clover@Clover-NB benchmark](master)$ php80 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.47856116294861
-MbString: 0.6115779876709
+PHP mb_*(): 0.52706694602966
+MbString: 0.80510210990906
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -21.75%
+Speed up: -34.53%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.6687119007111
-MbString: 0.5090639591217
+PHP mb_*(): 1.7562229633331
+MbString: 0.60707712173462
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 227.8%
+Speed up: 189.29%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.78509998321533
-MbString: 0.15201902389526
+PHP mb_*(): 0.80110192298889
+MbString: 0.14901900291443
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 416.45%
+Speed up: 437.58%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3726749420166
-MbString: 0.088011026382446
+PHP mb_*(): 1.4211800098419
+MbString: 0.10651397705078
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1459.66%
+Speed up: 1234.27%
