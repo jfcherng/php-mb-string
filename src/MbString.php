@@ -290,21 +290,25 @@ class MbString extends \ArrayObject
     // ArrayObject //
     /////////////////
 
+    #[\ReturnTypeWillChange]
     public function offsetSet($idx, $char): void
     {
         $this->setAt($idx, $char);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($idx): string
     {
         return $this->getAt($idx);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetExists($idx): bool
     {
         return \is_int($idx) ? $this->strlen() > $idx : false;
     }
 
+    #[\ReturnTypeWillChange]
     public function append($str): void
     {
         $this->str .= $this->inputConv($str);
