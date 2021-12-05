@@ -1,10 +1,11 @@
 PHP versions under test:
 
-- PHP 7.1.34-dev (cli) (built: Jan 15 2020 03:51:48) ( NTS MSVC14 (Visual C++ 2015) x64 )
+- PHP 7.1.33 (cli) (built: Oct 23 2019 09:22:42) ( NTS MSVC14 (Visual C++ 2015) x64 )
 - PHP 7.2.34 (cli) (built: Oct  1 2020 10:25:47) ( NTS MSVC15 (Visual C++ 2017) x64 )
-- PHP 7.3.24 (cli) (built: Oct 27 2020 14:43:48) ( NTS MSVC15 (Visual C++ 2017) x64 )
-- PHP 7.4.12 (cli) (built: Oct 27 2020 17:18:33) ( NTS Visual C++ 2017 x64 )
-- PHP 8.0.0 (cli) (built: Nov 24 2020 22:02:58) ( NTS Visual C++ 2019 x64 )
+- PHP 7.3.33 (cli) (built: Nov 17 2021 11:43:41) ( NTS MSVC15 (Visual C++ 2017) x64 )
+- PHP 7.4.26 (cli) (built: Nov 17 2021 10:35:45) ( NTS Visual C++ 2017 x64 )
+- PHP 8.0.13 (cli) (built: Nov 17 2021 15:44:06) ( NTS Visual C++ 2019 x64 )
+- PHP 8.1.0 (cli) (built: Nov 23 2021 21:59:51) (NTS Visual C++ 2019 x64)
 
 All tests have the following configurations:
 
@@ -19,191 +20,229 @@ For PHP 8, JIT is enabled with the following configurations:
 - opcache.jit_debug=0
 
 
-[Clover@Clover-NB benchmark](master)$ php71 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php71 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 1.5596981048584
-MbString: 0.90161395072937
+PHP mb_*(): 1.1643478870392
+MbString: 0.59211087226868
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: 72.99%
+Speed up: 96.64%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 3.2734160423279
-MbString: 0.73359298706055
+PHP mb_*(): 2.0793077945709
+MbString: 0.48031306266785
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 346.22%
+Speed up: 332.91%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 1.361673116684
-MbString: 0.17652177810669
+PHP mb_*(): 0.81672811508179
+MbString: 0.11249208450317
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 671.39%
+Speed up: 626.03%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 2.227283000946
-MbString: 0.10901403427124
+PHP mb_*(): 1.2480089664459
+MbString: 0.059252023696899
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1943.12%
+Speed up: 2006.27%
 
 
-[Clover@Clover-NB benchmark](master)>1$ php72 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php72 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 1.6042039394379
-MbString: 0.73109292984009
+PHP mb_*(): 1.2133929729462
+MbString: 0.63396787643433
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: 119.43%
+Speed up: 91.4%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 3.2604141235352
-MbString: 0.60207605361938
+PHP mb_*(): 2.1066188812256
+MbString: 0.51991295814514
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 441.53%
+Speed up: 305.19%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 1.3406708240509
-MbString: 0.14301800727844
+PHP mb_*(): 0.81985592842102
+MbString: 0.1202437877655
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 837.41%
+Speed up: 581.83%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 2.1642751693726
-MbString: 0.097011804580688
+PHP mb_*(): 1.2363729476929
+MbString: 0.065882921218872
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 2130.94%
+Speed up: 1776.62%
 
 
-[Clover@Clover-NB benchmark](master)>1$ php73 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php73 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.53656816482544
-MbString: 0.75309586524963
+PHP mb_*(): 0.376708984375
+MbString: 0.62250208854675
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -28.75%
+Speed up: -39.48%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.6892149448395
-MbString: 0.62207913398743
+PHP mb_*(): 0.97427797317505
+MbString: 0.50918793678284
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 171.54%
+Speed up: 91.34%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.766597032547
-MbString: 0.14851880073547
+PHP mb_*(): 0.43806719779968
+MbString: 0.12041115760803
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 416.16%
+Speed up: 263.81%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3646728992462
-MbString: 0.10001301765442
+PHP mb_*(): 0.71754693984985
+MbString: 0.063323020935059
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1264.5%
+Speed up: 1033.15%
 
 
-[Clover@Clover-NB benchmark](master)>1$ php74 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php74 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.49456310272217
-MbString: 0.74409484863281
+PHP mb_*(): 0.32944703102112
+MbString: 0.63819408416748
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -33.53%
+Speed up: -48.38%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.6842131614685
-MbString: 0.59357595443726
+PHP mb_*(): 0.93320608139038
+MbString: 0.52730894088745
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 183.74%
+Speed up: 76.98%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.7705979347229
-MbString: 0.13901710510254
+PHP mb_*(): 0.42088890075684
+MbString: 0.12360405921936
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 454.32%
+Speed up: 240.51%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3496720790863
-MbString: 0.095511913299561
+PHP mb_*(): 0.71374106407166
+MbString: 0.061835050582886
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1313.09%
+Speed up: 1054.27%
 
 
-[Clover@Clover-NB benchmark](master)$ php80 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php80 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.40705108642578
-MbString: 0.79510092735291
+PHP mb_*(): 0.25532412528992
+MbString: 0.61637687683105
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -48.81%
+Speed up: -58.58%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 1.5967030525208
-MbString: 0.63958096504211
+PHP mb_*(): 0.87763500213623
+MbString: 0.4999258518219
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 149.65%
+Speed up: 75.55%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.7570960521698
-MbString: 0.15452003479004
+PHP mb_*(): 0.40582585334778
+MbString: 0.11784386634827
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 389.97%
+Speed up: 244.38%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 1.3436708450317
-MbString: 0.1020131111145
+PHP mb_*(): 0.71277904510498
+MbString: 0.062803030014038
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1217.16%
+Speed up: 1034.94%
+
+
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php81 benchmark.php
+# BENCHMARK: very-short.txt
+===========================
+PHP mb_*(): 0.24852204322815
+MbString: 0.59736299514771
+===========================
+Nums of Chars: 60
+Nums of Runs: 10000
+Speed up: -58.4%
+
+# BENCHMARK: short.txt
+======================
+PHP mb_*(): 0.87016201019287
+MbString: 0.49669718742371
+======================
+Nums of Chars: 486
+Nums of Runs: 1000
+Speed up: 75.19%
+
+# BENCHMARK: long.txt
+=====================
+PHP mb_*(): 0.40611505508423
+MbString: 0.11528086662292
+=====================
+Nums of Chars: 1084
+Nums of Runs: 100
+Speed up: 252.28%
+
+# BENCHMARK: very-long.txt
+==========================
+PHP mb_*(): 0.70618605613708
+MbString: 0.060432910919189
+==========================
+Nums of Chars: 4624
+Nums of Runs: 10
+Speed up: 1068.55%
