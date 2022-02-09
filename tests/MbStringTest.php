@@ -42,9 +42,10 @@ final class MbStringTest extends TestCase
      */
     public function testMbString(): void
     {
-        $str = '那我就測試一下許功蓋！';
-        $mb = new MbString($str, 'UTF-8');
+        $mb = new MbString('', 'UTF-8');
+        static::assertSame('', (string) $mb);
 
+        $mb->set('那我就測試一下許功蓋！');
         static::assertSame('那我就測試一下許功蓋！', (string) $mb);
         static::assertSame('許', $mb[7]);
         static::assertSame('功', $mb->getAt(8));

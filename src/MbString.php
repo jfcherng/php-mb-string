@@ -33,6 +33,8 @@ class MbString extends \ArrayObject
 
     /**
      * The endian bytes for UTF-32.
+     *
+     * @var string
      */
     protected static $utf32Header;
 
@@ -44,8 +46,7 @@ class MbString extends \ArrayObject
      */
     public function __construct(string $str = '', string $encoding = 'UTF-8')
     {
-        // just use any char to get the endian header, here we use a space
-        static::$utf32Header = static::$utf32Header ?? \substr(\iconv($encoding, 'UTF-32', ' '), 0, 4);
+        static::$utf32Header = static::$utf32Header ?? static::getUtf32Header();
 
         $this->encoding = $encoding;
         $this->set($str);
@@ -323,7 +324,24 @@ class MbString extends \ArrayObject
     // misc functions //
     ////////////////////
 
-    // convert the output string to its original encoding
+    /**
+     * Gets the utf 32 header.
+     *
+     * @return string the UTF-32 header or empty string
+     */
+    protected static function getUtf32Header(): string
+    {
+        // just use any string to get the endian header, here we use "A"
+        $tmp = \iconv('ISO-8859-1', 'UTF-32', 'A');
+        // some distributions like "php alpine" docker image won't generate the header
+        return \strlen($tmp) > 4 ? \substr($tmp, 0, 4) : '';
+    }
+
+    /**
+     * Convert the output string to its original encoding.
+     *
+     * @param string $str The string
+     */
     protected function outputConv(string $str): string
     {
         if ($str === '') {
@@ -333,14 +351,17 @@ class MbString extends \ArrayObject
         return \iconv('UTF-32', $this->encoding, static::$utf32Header . $str);
     }
 
-    // convert the input string to UTF-32 without header
+    /**
+     * Convert the input string to UTF-32 without header.
+     *
+     * @param string $str The string
+     */
     protected function inputConv(string $str): string
     {
         if ($str === '') {
             return '';
         }
 
-        // we don't want the header so first 4 bytes are stripped
-        return \substr(\iconv($this->encoding, 'UTF-32', $str), 4);
+        return \substr(\iconv($this->encoding, 'UTF-32', $str), \strlen(static::$utf32Header));
     }
 }
