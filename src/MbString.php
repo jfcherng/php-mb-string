@@ -332,9 +332,9 @@ class MbString extends \ArrayObject
     protected static function getUtf32Header(): string
     {
         // just use any string to get the endian header, here we use "A"
-        $tmp = \iconv('ISO-8859-1', 'UTF-32', 'A');
+        $tmp = \iconv('UTF-8', 'UTF-32', 'A');
         // some distributions like "php alpine" docker image won't generate the header
-        return \strlen($tmp) > 4 ? \substr($tmp, 0, 4) : '';
+        return $tmp && \strlen($tmp) > 4 ? \substr($tmp, 0, 4) : '';
     }
 
     /**
