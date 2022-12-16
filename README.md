@@ -1,6 +1,6 @@
 # php-mb-string
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jfcherng/php-mb-string/Main/master?style=flat-square)](https://github.com/jfcherng/php-mb-string/actions)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/jfcherng/php-mb-string/php.yml?branch=master&style=flat-square)](https://github.com/jfcherng/php-mb-string/actions)
 [![Packagist](https://img.shields.io/packagist/dt/jfcherng/php-mb-string?style=flat-square)](https://packagist.org/packages/jfcherng/php-mb-string)
 [![Packagist Version](https://img.shields.io/packagist/v/jfcherng/php-mb-string?style=flat-square)](https://packagist.org/packages/jfcherng/php-mb-string)
 [![Project license](https://img.shields.io/github/license/jfcherng/php-mb-string?style=flat-square)](https://github.com/jfcherng/php-mb-string/blob/master/LICENSE)
