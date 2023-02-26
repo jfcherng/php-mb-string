@@ -15,7 +15,7 @@ namespace Jfcherng\Utility;
  *
  * @author Jack Cherng <jfcherng@gmail.com>
  */
-class MbString extends \ArrayObject
+class MbString extends \ArrayObject implements \Stringable
 {
     /**
      * UTF-32 string without endian bytes.
@@ -291,26 +291,22 @@ class MbString extends \ArrayObject
     // ArrayObject //
     /////////////////
 
-    #[\ReturnTypeWillChange]
-    public function offsetSet($idx, $char): void
+    public function offsetSet(mixed $idx, mixed $char): void
     {
         $this->setAt($idx, $char);
     }
 
-    #[\ReturnTypeWillChange]
-    public function offsetGet($idx): string
+    public function offsetGet(mixed $idx): string
     {
         return $this->getAt($idx);
     }
 
-    #[\ReturnTypeWillChange]
-    public function offsetExists($idx): bool
+    public function offsetExists(mixed $idx): bool
     {
         return \is_int($idx) ? $this->strlen() > $idx : false;
     }
 
-    #[\ReturnTypeWillChange]
-    public function append($str): void
+    public function append(mixed $str): void
     {
         $this->str .= $this->inputConv($str);
     }
