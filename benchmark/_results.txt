@@ -6,6 +6,7 @@ PHP versions under test:
 - PHP 7.4.26 (cli) (built: Nov 17 2021 10:35:45) ( NTS Visual C++ 2017 x64 )
 - PHP 8.0.13 (cli) (built: Nov 17 2021 15:44:06) ( NTS Visual C++ 2019 x64 )
 - PHP 8.1.0 (cli) (built: Nov 23 2021 21:59:51) (NTS Visual C++ 2019 x64)
+- PHP 8.2.3 (cli) (built: Feb 14 2023 14:56:45) (NTS Visual C++ 2019 x64)
 
 All tests have the following configurations:
 
@@ -210,39 +211,39 @@ Nums of Runs: 10
 Speed up: 1034.94%
 
 
-[jfcherng@JFCHERNG-FA506 benchmark](master)$ php81 benchmark.php
+[jfcherng@JFCHERNG-FA506 benchmark](master)$ php82 benchmark.php
 # BENCHMARK: very-short.txt
 ===========================
-PHP mb_*(): 0.24852204322815
-MbString: 0.59736299514771
+PHP mb_*(): 0.25620985031128
+MbString: 0.6041100025177
 ===========================
 Nums of Chars: 60
 Nums of Runs: 10000
-Speed up: -58.4%
+Speed up: -57.59%
 
 # BENCHMARK: short.txt
 ======================
-PHP mb_*(): 0.87016201019287
-MbString: 0.49669718742371
+PHP mb_*(): 0.89691805839539
+MbString: 0.49669003486633
 ======================
 Nums of Chars: 486
 Nums of Runs: 1000
-Speed up: 75.19%
+Speed up: 80.58%
 
 # BENCHMARK: long.txt
 =====================
-PHP mb_*(): 0.40611505508423
-MbString: 0.11528086662292
+PHP mb_*(): 0.41864919662476
+MbString: 0.11893701553345
 =====================
 Nums of Chars: 1084
 Nums of Runs: 100
-Speed up: 252.28%
+Speed up: 251.99%
 
 # BENCHMARK: very-long.txt
 ==========================
-PHP mb_*(): 0.70618605613708
-MbString: 0.060432910919189
+PHP mb_*(): 0.73447799682617
+MbString: 0.061700820922852
 ==========================
 Nums of Chars: 4624
 Nums of Runs: 10
-Speed up: 1068.55%
+Speed up: 1090.39%
