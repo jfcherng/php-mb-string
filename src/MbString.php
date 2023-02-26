@@ -147,7 +147,7 @@ class MbString extends \ArrayObject
 
     public static function strToChars(string $str): array
     {
-        return \preg_match_all('/./suS', $str, $matches) ? $matches[0] : [];
+        return \preg_split('//uS', $str, -1, \PREG_SPLIT_NO_EMPTY) ?: [];
     }
 
     ///////////////////////////////////
