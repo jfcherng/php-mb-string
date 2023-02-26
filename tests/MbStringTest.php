@@ -99,12 +99,12 @@ final class MbStringTest extends TestCase
         $mb->set('本月，是五月。');
         static::assertSame(
             ['本月', '，', '是五月', '。', ''],
-            $mb->toArraySplit('/([，。])/uS', -1, \PREG_SPLIT_DELIM_CAPTURE)
+            $mb->toArraySplit('/([，。])/uS', -1, \PREG_SPLIT_DELIM_CAPTURE),
         );
 
         static::assertSame(
             ['本', '月', '是', '五', '月', "\n", '！'],
-            MbString::strToChars("本月是五月\n！")
+            MbString::strToChars("本月是五月\n！"),
         );
     }
 }

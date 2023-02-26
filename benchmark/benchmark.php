@@ -19,33 +19,33 @@ function benchmark(string $str, int $runs, string $title = ''): void
         $title = 'Untitled';
     }
 
-    $separator = \str_repeat('=', \strlen($title));
+    $separator = str_repeat('=', \strlen($title));
     echo "{$title}\n{$separator}\n";
 
-    //////////////////
+    // ////////////////
     // begin mb_*() //
-    //////////////////
+    // ////////////////
 
-    $time = \microtime(true);
+    $time = microtime(true);
 
-    $strLen = \mb_strlen($str, 'UTF-8');
+    $strLen = mb_strlen($str, 'UTF-8');
     for ($run = 0; $run < $runs; ++$run) {
         for ($i = 0; $i < $strLen; ++$i) {
             // get nth char
-            $char = \mb_substr($str, $i, 1, 'UTF-8');
+            $char = mb_substr($str, $i, 1, 'UTF-8');
             // in-place replacement of nth char
-            $str = \mb_substr($str, 0, $i) . '停' . \mb_substr($str, $i + 1);
+            $str = mb_substr($str, 0, $i) . '停' . mb_substr($str, $i + 1);
         }
     }
 
-    $timeMbNative = \microtime(true) - $time;
+    $timeMbNative = microtime(true) - $time;
     echo "PHP mb_*(): {$timeMbNative}\n";
 
-    ////////////////////
+    // //////////////////
     // begin MbString //
-    ////////////////////
+    // //////////////////
 
-    $time = \microtime(true);
+    $time = microtime(true);
 
     $mbStr = new MbString($str, 'UTF-8');
     $strLen = $mbStr->strlen();
@@ -58,19 +58,19 @@ function benchmark(string $str, int $runs, string $title = ''): void
         }
     }
 
-    $timeMbString = \microtime(true) - $time;
+    $timeMbString = microtime(true) - $time;
     echo "MbString: {$timeMbString}\n";
 
-    /////////
+    // ///////
     // end //
-    /////////
+    // ///////
 
     echo "{$separator}\n";
     echo "Nums of Chars: {$strLen}\n";
     echo "Nums of Runs: {$runs}\n";
 
     $speedUp = $timeMbNative / $timeMbString - 1;
-    $speedUpPercent = \round($speedUp * 100, 2);
+    $speedUpPercent = round($speedUp * 100, 2);
     echo "Speed up: {$speedUpPercent}%\n\n";
 }
 
@@ -83,8 +83,8 @@ $benchmarks = [
 
 foreach ($benchmarks as $file => $runs) {
     benchmark(
-        \file_get_contents(__DIR__ . "/{$file}"),
+        file_get_contents(__DIR__ . "/{$file}"),
         (int) $runs,
-        "# BENCHMARK: {$file}"
+        "# BENCHMARK: {$file}",
     );
 }

@@ -78,17 +78,17 @@ class MbString extends \ArrayObject implements \Stringable
     {
         $char = $this->inputConv($char);
         if (\strlen($char) > 4) {
-            $char = \substr($char, 0, 4);
+            $char = substr($char, 0, 4);
         }
 
         $spacesPrepend = $idx - $this->strlen();
         // set index (out of bound)
         if ($spacesPrepend > 0) {
-            $this->str .= $this->inputConv(\str_repeat(' ', $spacesPrepend)) . $char;
+            $this->str .= $this->inputConv(str_repeat(' ', $spacesPrepend)) . $char;
         }
         // set index (in bound)
         else {
-            $this->str = \substr_replace($this->str, $char, $idx << 2, 4);
+            $this->str = substr_replace($this->str, $char, $idx << 2, 4);
         }
 
         return $this;
@@ -114,12 +114,12 @@ class MbString extends \ArrayObject implements \Stringable
 
     public function getAt(int $idx): string
     {
-        return $this->outputConv(\substr($this->str, $idx << 2, 4));
+        return $this->outputConv(substr($this->str, $idx << 2, 4));
     }
 
     public function getAtRaw(int $idx): string
     {
-        return \substr($this->str, $idx << 2, 4);
+        return substr($this->str, $idx << 2, 4);
     }
 
     public function toArray(): array
@@ -133,7 +133,7 @@ class MbString extends \ArrayObject implements \Stringable
             return [];
         }
 
-        return \preg_split($regex, $this->get(), $limit, $flags);
+        return preg_split($regex, $this->get(), $limit, $flags);
     }
 
     public function toArrayRaw(): array
@@ -142,22 +142,22 @@ class MbString extends \ArrayObject implements \Stringable
             return [];
         }
 
-        return \str_split($this->str, 4);
+        return str_split($this->str, 4);
     }
 
     public static function strToChars(string $str): array
     {
-        return \preg_split('//uS', $str, -1, \PREG_SPLIT_NO_EMPTY) ?: [];
+        return preg_split('//uS', $str, -1, \PREG_SPLIT_NO_EMPTY) ?: [];
     }
 
-    ///////////////////////////////////
+    // /////////////////////////////////
     // string manipulation functions //
-    ///////////////////////////////////
+    // /////////////////////////////////
 
     public function stripos(string $needle, int $offset = 0)
     {
         $needle = $this->inputConv($needle);
-        $pos = \stripos($this->str, $needle, $offset << 2);
+        $pos = stripos($this->str, $needle, $offset << 2);
 
         return \is_bool($pos) ? $pos : $pos >> 2;
     }
@@ -170,7 +170,7 @@ class MbString extends \ArrayObject implements \Stringable
     public function strpos(string $needle, int $offset = 0)
     {
         $needle = $this->inputConv($needle);
-        $pos = \strpos($this->str, $needle, $offset << 2);
+        $pos = strpos($this->str, $needle, $offset << 2);
 
         return \is_bool($pos) ? $pos : $pos >> 2;
     }
@@ -179,8 +179,8 @@ class MbString extends \ArrayObject implements \Stringable
     {
         return $this->outputConv(
             isset($length)
-                ? \substr($this->str, $start << 2, $length << 2)
-                : \substr($this->str, $start << 2)
+                ? substr($this->str, $start << 2, $length << 2)
+                : substr($this->str, $start << 2),
         );
     }
 
@@ -190,37 +190,37 @@ class MbString extends \ArrayObject implements \Stringable
 
         return $this->outputConv(
             isset($length)
-                ? \substr_replace($this->str, $replacement, $start << 2, $length << 2)
-                : \substr_replace($this->str, $replacement, $start << 2)
+                ? substr_replace($this->str, $replacement, $start << 2, $length << 2)
+                : substr_replace($this->str, $replacement, $start << 2),
         );
     }
 
     public function strtolower(): string
     {
-        return \strtolower($this->get());
+        return strtolower($this->get());
     }
 
     public function strtoupper(): string
     {
-        return \strtoupper($this->get());
+        return strtoupper($this->get());
     }
 
-    ////////////////////////////////
+    // //////////////////////////////
     // non-manipulative functions //
-    ////////////////////////////////
+    // //////////////////////////////
 
     public function has(string $needle): bool
     {
         $needle = $this->inputConv($needle);
 
-        return \strpos($this->str, $needle) !== false;
+        return str_contains($this->str, $needle);
     }
 
     public function startsWith(string $needle): bool
     {
         $needle = $this->inputConv($needle);
 
-        return $needle === \substr($this->str, 0, \strlen($needle));
+        return $needle === substr($this->str, 0, \strlen($needle));
     }
 
     public function endsWith(string $needle): bool
@@ -228,17 +228,17 @@ class MbString extends \ArrayObject implements \Stringable
         $needle = $this->inputConv($needle);
         $length = \strlen($needle);
 
-        return $length === 0 ? true : $needle === \substr($this->str, -$length);
+        return $length === 0 ? true : $needle === substr($this->str, -$length);
     }
 
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
     // those functions will not return a value //
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
 
     public function str_insert_i(string $insert, int $position): self
     {
         $insert = $this->inputConv($insert);
-        $this->str = \substr_replace($this->str, $insert, $position << 2, 0);
+        $this->str = substr_replace($this->str, $insert, $position << 2, 0);
 
         return $this;
     }
@@ -252,15 +252,15 @@ class MbString extends \ArrayObject implements \Stringable
         unset($closure);
 
         if (\count($closures) < 2) {
-            $closures[0] = $closures[1] = \reset($closures);
+            $closures[0] = $closures[1] = reset($closures);
         }
 
         if (isset($length)) {
-            $replacement = $closures[0] . \substr($this->str, $start << 2, $length << 2) . $closures[1];
-            $this->str = \substr_replace($this->str, $replacement, $start << 2, $length << 2);
+            $replacement = $closures[0] . substr($this->str, $start << 2, $length << 2) . $closures[1];
+            $this->str = substr_replace($this->str, $replacement, $start << 2, $length << 2);
         } else {
-            $replacement = $closures[0] . \substr($this->str, $start << 2) . $closures[1];
-            $this->str = \substr_replace($this->str, $replacement, $start << 2);
+            $replacement = $closures[0] . substr($this->str, $start << 2) . $closures[1];
+            $this->str = substr_replace($this->str, $replacement, $start << 2);
         }
 
         return $this;
@@ -270,7 +270,7 @@ class MbString extends \ArrayObject implements \Stringable
     {
         $search = $this->inputConv($search);
         $replace = $this->inputConv($replace);
-        $this->str = \str_replace($search, $replace, $this->str);
+        $this->str = str_replace($search, $replace, $this->str);
 
         return $this;
     }
@@ -280,16 +280,16 @@ class MbString extends \ArrayObject implements \Stringable
         $replacement = $this->inputConv($replacement);
         $this->str = (
             isset($length)
-                ? \substr_replace($this->str, $replacement, $start << 2, $length << 2)
-                : \substr_replace($this->str, $replacement, $start << 2)
+                ? substr_replace($this->str, $replacement, $start << 2, $length << 2)
+                : substr_replace($this->str, $replacement, $start << 2)
         );
 
         return $this;
     }
 
-    /////////////////
+    // ///////////////
     // ArrayObject //
-    /////////////////
+    // ///////////////
 
     public function offsetSet(mixed $idx, mixed $char): void
     {
@@ -316,9 +316,9 @@ class MbString extends \ArrayObject implements \Stringable
         return $this->strlen();
     }
 
-    ////////////////////
+    // //////////////////
     // misc functions //
-    ////////////////////
+    // //////////////////
 
     /**
      * Gets the utf 32 header.
@@ -328,9 +328,9 @@ class MbString extends \ArrayObject implements \Stringable
     protected static function getUtf32Header(): string
     {
         // just use any string to get the endian header, here we use "A"
-        $tmp = \iconv('UTF-8', 'UTF-32', 'A');
+        $tmp = iconv('UTF-8', 'UTF-32', 'A');
         // some distributions like "php alpine" docker image won't generate the header
-        return $tmp && \strlen($tmp) > 4 ? \substr($tmp, 0, 4) : '';
+        return $tmp && \strlen($tmp) > 4 ? substr($tmp, 0, 4) : '';
     }
 
     /**
@@ -344,7 +344,7 @@ class MbString extends \ArrayObject implements \Stringable
             return '';
         }
 
-        return \iconv('UTF-32', $this->encoding, static::$utf32Header . $str);
+        return iconv('UTF-32', $this->encoding, static::$utf32Header . $str);
     }
 
     /**
@@ -358,6 +358,6 @@ class MbString extends \ArrayObject implements \Stringable
             return '';
         }
 
-        return \substr(\iconv($this->encoding, 'UTF-32', $str), \strlen(static::$utf32Header));
+        return substr(iconv($this->encoding, 'UTF-32', $str), \strlen(static::$utf32Header));
     }
 }
