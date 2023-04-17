@@ -36,6 +36,10 @@
         "phan/phan": "^5",
         "phpunit/phpunit": "^9 || ^10"
     },
+    "suggest": {
+        "ext-iconv": "Either \"ext-iconv\" or \"ext-mbstring\" is requried.",
+        "ext-mbstring": "Either \"ext-iconv\" or \"ext-mbstring\" is requried."
+    },
     "scripts": {
         "analyze": [
             "phan --color"
