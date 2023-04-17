@@ -17,6 +17,16 @@ namespace Jfcherng\Utility;
  */
 class MbString extends \ArrayObject
 {
+    public const MBSTRING_CONVMETHOD_ICONV = 1;
+    public const MBSTRING_CONVMETHOD_MBSTRING = 2;
+
+    /**
+     * The way to convert text encoding.
+     *
+     * @var int
+     */
+    public static $convMethod;
+
     /**
      * UTF-32 string without endian bytes.
      *
@@ -46,6 +56,7 @@ class MbString extends \ArrayObject
      */
     public function __construct(string $str = '', string $encoding = 'UTF-8')
     {
+        static::$convMethod = static::$convMethod ?? static::detectConvEncoding();
         static::$utf32Header = static::$utf32Header ?? static::getUtf32Header();
 
         $this->encoding = $encoding;
@@ -332,9 +343,35 @@ class MbString extends \ArrayObject
     protected static function getUtf32Header(): string
     {
         // just use any string to get the endian header, here we use "A"
-        $tmp = \iconv('UTF-8', 'UTF-32', 'A');
+        $tmp = self::convEncoding('A', 'UTF-8', 'UTF-32');
         // some distributions like "php alpine" docker image won't generate the header
         return $tmp && \strlen($tmp) > 4 ? \substr($tmp, 0, 4) : '';
+    }
+
+    protected static function detectConvEncoding(): int
+    {
+        if (\function_exists('iconv') && \iconv('UTF-8', 'UTF-32', 'A') !== false) {
+            return static::MBSTRING_CONVMETHOD_ICONV;
+        }
+
+        if (\function_exists('mb_convert_encoding') && \mb_convert_encoding('A', 'UTF-32', 'UTF-8') !== false) {
+            return static::MBSTRING_CONVMETHOD_MBSTRING;
+        }
+
+        throw new \RuntimeException('Either "iconv" or "mbstring" extension is required.');
+    }
+
+    protected static function convEncoding(string $str, string $from, string $to): string
+    {
+        if (static::$convMethod === static::MBSTRING_CONVMETHOD_ICONV) {
+            return \iconv($from, $to, $str);
+        }
+
+        if (static::$convMethod === static::MBSTRING_CONVMETHOD_MBSTRING) {
+            return \mb_convert_encoding($str, $to, $from);
+        }
+
+        throw new \RuntimeException('Unknown conversion method.');
     }
 
     /**
@@ -348,7 +385,7 @@ class MbString extends \ArrayObject
             return '';
         }
 
-        return \iconv('UTF-32', $this->encoding, static::$utf32Header . $str);
+        return static::convEncoding(static::$utf32Header . $str, 'UTF-32', $this->encoding);
     }
 
     /**
@@ -362,6 +399,6 @@ class MbString extends \ArrayObject
             return '';
         }
 
-        return \substr(\iconv($this->encoding, 'UTF-32', $str), \strlen(static::$utf32Header));
+        return \substr(static::convEncoding($str, $this->encoding, 'UTF-32'), \strlen(static::$utf32Header));
     }
 }
